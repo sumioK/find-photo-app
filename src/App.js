@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState,useEffect} from 'react';
 
 function App() {
+
+  const [images, setImages] = useState([]);
+  const [text, setText] = useState('');
+  const [query, setQuery] = useState('apple');
+  useEffect(() => {
+    console.log('useEffect runnning')
+    fetch(`https://api.unsplash.com/serch/photos?query=${query}&client_id=${process.env}.React_APP_CLIENT_ID`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setImages(data.results)
+    },[query])
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
     </div>
   );
 }
