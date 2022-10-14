@@ -35,7 +35,16 @@ function App() {
           </button>
         </form>
       </div>
-      
+      <div className='container'>
+        {
+          images.map(image => (
+            <div key={image.id} className="card">
+              <img src={image.urls.regular} className="card-img" alt="" />
+            </div>  
+    
+          ))
+        }
+      </div>
     </div>
   );
 }
